@@ -9,7 +9,7 @@ export default function Footer() {
         color: 'var(--color-footer-text)',
         fontFamily: 'var(--font-body)',
       }}
-      className="pb-20 md:pb-0"
+      className=""
     >
       {/* Main grid */}
       <div

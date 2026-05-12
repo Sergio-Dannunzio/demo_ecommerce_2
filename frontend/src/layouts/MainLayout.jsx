@@ -2,7 +2,6 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
-import BottomNav from '../components/layout/BottomNav'
 
 export default function MainLayout() {
   const { pathname } = useLocation()
@@ -18,7 +17,6 @@ export default function MainLayout() {
         <Outlet />
       </main>
       <Footer />
-      <BottomNav />
     </div>
   )
 }
