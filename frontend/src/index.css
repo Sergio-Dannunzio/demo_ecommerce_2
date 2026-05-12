@@ -1,0 +1,261 @@
+/* Google Fonts — Vintage stack */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Libre+Franklin:wght@300;400;500;600&family=Caveat:wght@400;600&display=swap');
+
+/* Material Symbols */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+@import "tailwindcss";
+
+/* ─── CSS Custom Properties ─────────────────────────────── */
+:root {
+  /* Colors */
+  --color-bg:           #f2ead8;
+  --color-surface:      #e8ddc4;
+  --color-surface-alt:  #ede3cc;
+  --color-on-bg:        #2c1a0e;
+  --color-on-surface:   #3d2812;
+  --color-muted:        #8a7a68;
+  --color-border:       #c4b49a;
+  --color-border-strong:#8a7060;
+
+  --color-primary:      #2c1a0e;
+  --color-on-primary:   #f2ead8;
+
+  --color-accent:       #b8633a;
+  --color-accent-hover: #9e5230;
+  --color-on-accent:    #fdf8f0;
+
+  --color-olive:        #5a6b3a;
+
+  --color-tag:          #e0d0b0;
+  --color-tag-text:     #5a4030;
+
+  --color-header-bg:    #ffffff;
+  --color-header-text:  #2c1a0e;
+  --color-footer-bg:    #1e1008;
+  --color-footer-text:  #c4b49a;
+
+  /* Typography */
+  --font-heading:  'DM Serif Display', serif;
+  --font-body:     'Libre Franklin', sans-serif;
+  --font-accent:   'Caveat', cursive;
+
+  /* Spacing — 60px nav bar + ~32px AnnouncementBar */
+  --header-h:      92px;
+}
+
+/* ─── Base ───────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-on-bg);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-heading);
+  line-height: 1.15;
+}
+
+/* ─── Material Icons ─────────────────────────────────────── */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 22;
+  user-select: none;
+}
+
+/* ─── Vintage Utilities ──────────────────────────────────── */
+
+/* Grain / noise overlay */
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+
+/* Dashed vintage border */
+.border-vintage {
+  border: 1.5px dashed var(--color-border);
+}
+
+/* Double-rule heading decoration */
+.heading-rule {
+  position: relative;
+  display: inline-block;
+}
+.heading-rule::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--color-accent);
+  margin-top: 10px;
+}
+
+/* Stamp badge */
+.stamp {
+  font-family: var(--font-accent);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  padding: 2px 10px;
+  border: 1.5px solid currentColor;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+/* Price tag */
+.price-tag {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: var(--color-on-bg);
+}
+.price-tag-old {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  text-decoration: line-through;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.btn-primary:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 11px 27px;
+  border: 1.5px solid var(--color-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  transition: color 0.15s ease;
+  padding: 0;
+}
+.btn-ghost:hover {
+  color: var(--color-on-bg);
+}
+
+/* ─── Btn fill slide (hero secondary) ───────────────────── */
+.btn-fill-slide {
+  position: relative;
+  overflow: hidden;
+}
+.btn-fill-slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(242, 234, 216, 0.15);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-fill-slide:hover::before {
+  transform: scaleX(1);
+}
+
+/* ─── Look name animation ───────────────────────────────── */
+/* Entrada */
+@keyframes lookFromRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+@keyframes lookFromLeft {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+/* Salida */
+@keyframes lookToLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+@keyframes lookToRight {
+  from { transform: translateX(0); }
+  to   { transform: translateX(100%); }
+}
+.look-from-right { animation: lookFromRight 0.65s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.look-from-left  { animation: lookFromLeft  0.65s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.look-to-left    { animation: lookToLeft    0.65s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.look-to-right   { animation: lookToRight   0.65s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* ─── Scrollbar hide ─────────────────────────────────────── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Page padding ───────────────────────────────────────── */
+.page-pad {
+  padding-left: max(16px, calc((100% - 1280px) / 2));
+  padding-right: max(16px, calc((100% - 1280px) / 2));
+}
